@@ -83,26 +83,28 @@ export class ControladorHabitacion{
             })
         }
         }
-    }
 
-    eliminar(request, response){
-        try{
-            //1.Recibir datos
-            let id = request.params.id
-            //2.Elimine el id
-            //3. Responda
-            response.status(200).json({
-                "estado": true,
-                "mensaje":"Exito buscando al borrar habitacion",
-                "datos": null
-            })
-        }catch(error){
-            response.status(400).json({
-                "estado": false,
-                "mensaje":"error my rey , fallamos modificando la habitacion" +error,
-                "datos": null
-            })
-    
+        eliminar(request, response){
+            try{
+                //1.Recibir datos
+                let id = request.params.id
+                //2.Elimine el id
+                //3. Responda
+                response.status(200).json({
+                    "estado": true,
+                    "mensaje":"Exito buscando al borrar habitacion",
+                    "datos": null
+                })
+            }catch(error){
+                response.status(400).json({
+                    "estado": false,
+                    "mensaje":"error my rey , fallamos modificando la habitacion" +error,
+                    "datos": null
+                })
+        
+        }
     }
+       
 }
+
    
