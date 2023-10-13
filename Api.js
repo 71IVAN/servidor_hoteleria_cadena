@@ -1,11 +1,13 @@
 //Esta clase representa un servidor
 import express from 'express'
 import { rutasApi } from './routes/rutasHoteles.js'
+import { establecerConexionBD } from './database/conexion.js'
 
 export class Api{
 
     constructor(){
         this.app = express()
+        this.concectarBD()
         this.procesarPeticiones()
 
     }
@@ -20,9 +22,13 @@ export class Api{
 
     //2. Procesar peteciones y responderlas
     procesarPeticiones(){
+        this.app.use(express.json())
         this.app.use("/",rutasApi)
-        this.app-use(express.json())
+        
         }
         
     //3.Se conecta a la base de datos
+    concectarBD(){
+        establecerConexionBD()
+    }
 }
