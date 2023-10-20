@@ -49,15 +49,15 @@ export class ControladorHabitacion{
         try{
             //1. Hay que reciir datos(si)
             let servicioHabitacion = new ServicioHabitacion()
-            let id= request.params.id
-            let idHabitacion = request.body
+            let id= request
+            let datos = request.body
             await servicioHabitacion.modificar(id, datos) //Mostrar datos de esto
             //2. Modificar en bd
             //3.Enviar respuestas 
             response.status(200).json({
                 "estado": true,
                 "mensaje":"Exito buscando las habitaciones",
-                "datos": ""
+                "datos": null
             })
 
         }catch(error){
@@ -73,20 +73,21 @@ export class ControladorHabitacion{
         try{
             //1.Recibir datos
             let servicioHabitacion = new ServicioHabitacion()
-            let datosRegistrar = request.body
+            let datos = request.body
             await servicioHabitacion.registrar(datos)
             //2. Guardelos en bd
             //3. Responda 
             response.status(200).json({
                 "estado": true,
                 "mensaje":"Exito al registrar la habitacion",
-                "datos": null
+                "datos":datos
+                //"diferencia":"Diferencia dias"
             })
 
         }catch(error){
             response.status(400).json({
                 "estado": false,
-                "mensaje":"error my rey , fallamos modificando la habitacion" +error,
+                "mensaje":"error my rey , fallamos en la reserva" +error,
                 "datos": null
             })
         }

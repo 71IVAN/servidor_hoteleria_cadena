@@ -22,4 +22,4 @@ const Habitacion = new Schema({
     }
 })
 
-export const modeloReserva = mongose.model('habitaciones', Habitacion)
+export const modeloHabitacion = mongoose.model('habitaciones', Habitacion)

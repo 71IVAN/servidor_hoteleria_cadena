@@ -1,5 +1,5 @@
-import { modeloReserva } from "../models/modeloHabitacion";
-class ServicioReservas{
+import { modeloReserva } from "../models/modeloReserva";
+export class ServicioReservas{
     
     constructor(){}
 

@@ -1,5 +1,5 @@
 
-import modeloHabitacion from '../models/modeloHabitacion.js'
+import {modeloHabitacion} from '../models/modeloHabitacion.js'
 export class ServicioHabitacion{
 
     constructor(){}
@@ -10,8 +10,8 @@ export class ServicioHabitacion{
     }
 
     async buscarPorId(id){
-        let habiatcion = await modeloHabitacion.findById(id)
-        return habiatcion
+        let habitacion = await modeloHabitacion.findById(id)
+        return habitacion
     }
 
     async modificar(id, datos){
@@ -19,12 +19,12 @@ export class ServicioHabitacion{
     }
 
     async registrar(datos){
-        let habiatcionNueva = new modeloHabitacion(datos)
-        return await habiatcionNueva.save()
+        let habitacionNueva = new modeloHabitacion(datos)
+        return await habitacionNueva.save()
     }
 
     async eliminar(id){
-        let reservaEliminada = await modeloHabitacion.findByIdAndDelete(id)
-        return reservaEliminada
+        let habitacionEliminada = await modeloHabitacion.findByIdAndDelete(id)
+        return habitacionEliminada
     }
 }
