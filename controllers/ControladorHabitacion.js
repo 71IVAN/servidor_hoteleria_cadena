@@ -17,7 +17,7 @@ export class ControladorHabitacion{
         }catch(error){
             response.status(400).json({
                 "estado": false,
-                "mensaje":"error my rey , quedate en la casa",
+                "mensaje":"error en la busqueda",
                 "datos": null
             })
         }
@@ -32,14 +32,14 @@ export class ControladorHabitacion{
             //3. Respondo al cliente
             response.status(200).json({
                 "estado": true,
-                "mensaje":"Exito buscando las habitaciones",
+                "mensaje":"Exito buscando la habitacion",
                 "datos": await servicioHabitacion.buscarPorId(id)
             })
             
         }catch(error){
             response.status(400).json({
                 "estado": false,
-                "mensaje":"error my rey , quedate en la casa" +error,
+                "mensaje":"error , habitacion no encontrada" +error,
                 "datos": null
             })
         }
@@ -56,14 +56,14 @@ export class ControladorHabitacion{
             //3.Enviar respuestas 
             response.status(200).json({
                 "estado": true,
-                "mensaje":"Exito buscando las habitaciones",
+                "mensaje":"Exito al modificar la habitacion",
                 "datos": null
             })
 
         }catch(error){
             response.status(400).json({
                 "estado": false,
-                "mensaje":"error my rey , fallamos modificando la habitacion" +error,
+                "mensaje":"error , fallamos modificando la habitacion" +error,
                 "datos": null
             })
         }
@@ -87,7 +87,7 @@ export class ControladorHabitacion{
         }catch(error){
             response.status(400).json({
                 "estado": false,
-                "mensaje":"error my rey , fallamos en la reserva" +error,
+                "mensaje":"error , fallamos registrando la habitacion" +error,
                 "datos": null
             })
         }
@@ -102,13 +102,13 @@ export class ControladorHabitacion{
                 //3. Responda
                 response.status(200).json({
                     "estado": true,
-                    "mensaje":"Exito buscando al borrar habitacion",
+                    "mensaje":"Exito borramos la habitacion",
                     "datos": null
                 })
             }catch(error){
                 response.status(400).json({
                     "estado": false,
-                    "mensaje":"error my rey , fallamos modificando la habitacion" +error,
+                    "mensaje":"error , fallamos eliminando la habitacion" +error,
                     "datos": null
                 })
         
