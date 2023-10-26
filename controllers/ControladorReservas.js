@@ -1,3 +1,5 @@
+import moment from "moment"
+
 //import { ServicioReservas } from "../services/ServiciosReservas.js";
 export class ControladorReservas{
     constructor(){}
@@ -18,12 +20,68 @@ export class ControladorReservas{
         }
     }
 
-    buscarPorId(request, response){}
+    async buscarPorId(request, response){
+        try{
+            let servicioReservas = new ServicioReservas()
+            response.status(200).json({
+                "estado":true,
+                "mensaje":"Exito buscando las habitacion",
+                "datos": await servicioReservas.buscarPorId()
+            })
+        }catch(error){
+        }
+    }
 
-    modificar(request, response){}
+    async modificar(request, response){
+        try{
+            let servicioReservas = new ServicioReservas()
+            response.status(200).json({
+                "estado":true,
+                "mensaje":"Exito al modificar la habitacion",
+                "datos": await servicioReservas.modificar()
+            })
+        }catch(error){
 
-    resgitrar(request, response){}
+        }
+    }
 
-    eliminar(request, response){}
+    async resgitrar(request, response){
+        try{
+            const fechaInicio = moment(fechaInicioReserva)
+            const fechaFinal = moment(fechaFinalReserva)
+            const diferenciaDias = fechaFinal.diff(fechaInicio, 'days')
+            let servicioReservas = new ServicioReservas()
+            response.status(200).json({
+                "estado":true,
+                "mensaje": "Exito al registrar la habitacion",
+                "datos": await servicioReservas.resgitrar(),
+                "fechaInicio" : fechaInicio,
+                "fechaFinal": fechaFinal,
+                "diferencia":diferenciaDias
+            })
+        }catch(error){
+            response.status(500).json({
+                "estado": false,
+                "mensaje": "Error al registrar la habitación",
+                "error": error
+            });
+        }
+    }
+
+    async eliminar(request, response){
+        try{
+            let servicioReservas = new ServicioReservas()
+            response.status(200).json({
+                "estado":true,
+                "mensaje":"Exito al eliminar reserva",
+                "datos": await servicioReservas.eliminar()
+            })
+        }catch(error){
+            
+        }
+    }
 
 }
+
+
+

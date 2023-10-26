@@ -7,12 +7,12 @@ export class Api{
 
     constructor(){
         this.app = express()
-        this.concectarBD()
         this.procesarPeticiones()
+        this.concectarBD()
 
     }
     //Funciones de un servidor
-    //1. Imiciar el servidor
+    //1. Iniciar el servidor
     iniciarServidor(){
         this.app.listen(3000, function(){
             console.log("Servidor operando")

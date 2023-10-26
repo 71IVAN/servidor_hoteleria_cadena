@@ -1,12 +1,10 @@
-//esoacio para definir las rutas o enpoints especificos de su API
+//espacio para definir las rutas o enpoints especificos de su API
 import express from 'express'
 
 //Importo los controladores
 import {ControladorHabitacion} from "../controllers/ControladorHabitacion.js"
-import {ControladorReservas} from "../controllers/ControladorReservas.js"
 
 let controladorHabitacion = new ControladorHabitacion()
-let controladorReservas = new ControladorReservas()
 
 
 export let rutasApi = express.Router()
@@ -22,14 +20,4 @@ export let rutasApi = express.Router()
     
     rutasApi.delete('/api/habitaciones/:id', controladorHabitacion.eliminar)
     
-    //peticiones para las reservas
-    
-    rutasApi.post('/api/reserva', controladorReservas.resgitrar)
-    
-    rutasApi.get('/api/reservas', controladorReservas.buscarTodas)
-    
-    rutasApi.get('/api/reserva/:id', controladorReservas.buscarPorId)
-    
-    rutasApi.put('/api/reserva/:id', controladorReservas.modificar)
-    
-    rutasApi.delete('/api/reserva/:id', controladorReservas.eliminar)
+   
