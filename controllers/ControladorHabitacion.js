@@ -101,11 +101,12 @@ export class ControladorHabitacion{
                 let servicioHabitacion = new ServicioHabitacion()
                 let id = request.params.id
                 //2.Elimine el id
+                const habitacionEliminada = await Habitacion.findByIdAmdRemove(id)
                 //3. Responda
                 response.status(200).json({
                     "estado": true,
                     "mensaje":"Exito borramos la habitacion",
-                    "datos": null
+                    "datos": habitacionEliminada
                 })
             }catch(error){
                 response.status(400).json({
