@@ -76,7 +76,7 @@ export class ControladorHabitacion{
             let datos = request.body
             //Tomar dos fechas del objeto de datos
             //La diferencia en dias de esas dos fechas
-            //await servicioHabitacion.registrar(datos)
+            await servicioHabitacion.registrar(datos)
             //2. Guardelos en bd
             //3. Responda 
             response.status(200).json({

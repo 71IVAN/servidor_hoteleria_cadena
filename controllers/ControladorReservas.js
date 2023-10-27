@@ -1,6 +1,6 @@
 import moment from "moment"
 
-//import { ServicioReservas } from "../services/ServiciosReservas.js";
+import { ServicioReservas } from "../services/ServiciosReservas.js";
 export class ControladorReservas{
     constructor(){}
     
@@ -16,19 +16,30 @@ export class ControladorReservas{
                 "datos": await servicioReservas.buscarTodas()
             })
         }catch(error){
-
+            response.status(500).json({
+                "estado": false,
+                "mensaje":"error , fallamos buscando la habitacion" +error,
+                "datos": null
+            })
         }
     }
 
     async buscarPorId(request, response){
         try{
             let servicioReservas = new ServicioReservas()
+            let id= request.params.id
+            console.log(id)
             response.status(200).json({
                 "estado":true,
                 "mensaje":"Exito buscando las habitacion",
-                "datos": await servicioReservas.buscarPorId()
+                "datos": await servicioReservas.buscarPorId(id)
             })
         }catch(error){
+            response.status(500).json({
+                "estado": false,
+                "mensaje": "Error al registrar la habitación",
+                "error": error
+            });
         }
     }
 
@@ -41,28 +52,30 @@ export class ControladorReservas{
                 "datos": await servicioReservas.modificar()
             })
         }catch(error){
-
+            response.status(500).json({
+                "estado": false,
+                "mensaje": "Error al registrar la habitación",
+                "error": error
+            });
         }
     }
 
     async resgitrar(request, response){
         try{
-            const fechaInicio = moment(fechaInicioReserva)
-            const fechaFinal = moment(fechaFinalReserva)
-            const diferenciaDias = fechaFinal.diff(fechaInicio, 'days')
+            //const fechaInicio = moment(fechaInicioReserva)
+            //const fechaFinal = moment(fechaFinalReserva)
+            //const diferenciaDias = fechaFinal.diff(fechaInicio, 'days')
+            let datos = request.body
             let servicioReservas = new ServicioReservas()
+            await servicioReservas.resgitrar(datos)
+            console.log(datos)
             response.status(200).json({
-                "estado":true,
-                "mensaje": "Exito al registrar la habitacion",
-                "datos": await servicioReservas.resgitrar(),
-                "fechaInicio" : fechaInicio,
-                "fechaFinal": fechaFinal,
-                "diferencia":diferenciaDias
+                "datos":datos
             })
         }catch(error){
             response.status(500).json({
                 "estado": false,
-                "mensaje": "Error al registrar la habitación",
+                "mensaje": "Error al registrar la habitación"+error,
                 "error": error
             });
         }
@@ -77,7 +90,11 @@ export class ControladorReservas{
                 "datos": await servicioReservas.eliminar()
             })
         }catch(error){
-            
+            response.status(500).json({
+                "estado": false,
+                "mensaje":"error , fallamos eliminando la habitacion" +error,
+                "datos": null
+            })    
         }
     }
 

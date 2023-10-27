@@ -1,4 +1,4 @@
-import { modeloReserva } from "../models/modeloReserva";
+import { modeloReserva } from "../models/modeloReserva.js";
 export class ServicioReservas{
     
     constructor(){}
@@ -19,7 +19,7 @@ export class ServicioReservas{
 
     async resgitrar(datos){
         let reserevaNueva = new modeloReserva(datos)
-        return reserevaNueva
+        return reserevaNueva.save()
     }
 
     async eliminar(id){
